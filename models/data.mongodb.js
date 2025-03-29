@@ -1,14 +1,14 @@
-const mongoose = require("mongoose");
-
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/chatapp";
+const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-        console.log("⏳ Connecting to MongoDB...");
-        await mongoose.connect(MONGO_URI);
-        console.log("✅ Connected to MongoDB Atlas!");
-    } catch (err) {
-        console.error("❌ MongoDB Connection Error:", err);
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('✅ MongoDB Connected...');
+    } catch (error) {
+        console.error('❌ MongoDB Connection Error:', error);
         process.exit(1);
     }
 };
