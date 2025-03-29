@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.PASS;
 if (!MONGO_URI) {
     console.error("❌ No MongoDB URI found! Set MONGO_URI in environment variables.");
     process.exit(1);
