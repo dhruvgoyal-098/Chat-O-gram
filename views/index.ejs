@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat-o-gram</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar with form -->
+        <div class="sidebar">
+            <div class="header">
+                <div class="header-title">New Message</div>
+            </div>
+            
+            <form class="message-form" action="/submit" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" required placeholder="Type your message here"></textarea>
+                </div>
+                
+                <button type="submit" class="send-button">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Chat display area -->
+        <div class="chat-area">
+            <div class="header chat-header">
+                <div class="header-title">Message History</div>
+            </div>
+            
+            <div class="messages">
+                <div class="data">
+                    <% if (users && users.length > 0) { %>
+                        <% users.forEach(user => { %>
+                            <div class="message message-in">
+                                <div class="message-content">
+                                    <strong><%= user.name %></strong>
+                                    <p><%= user.message %></p>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="empty-state">
+                            <p>No messages yet. Send your first message!</p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
